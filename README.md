@@ -21,13 +21,13 @@ Tree of the most important files and folder in the project's repository :
 │       ├─-Two_Phases_Scaling : different models for two phases battery : Model_B_15_N_100, Model_B_18_N_200, ... Model_B_700_N_200000  
 │       └─-Two_Phases_Scenarios : different models for two phases battery : Model_B_6_N_30, Model_B_20_N_215  
 │ 
-├─┬─src/: Source folder.
-│ ├─-Graph.py: Exhaustive search.
-│ ├──Models.py: Greedy proposed method.
-│ ├──AverageRewardFull.py: Local search.
-│ ├──AverageRewardSparse.py: Local search.
-│ │──Plots.py: Local search.
-│ └──Launcher.py: Tabu search.
+├─┬─Solve/: Source folder.
+│ ├─-Graph.py: reads Rii matrix storage from '/Models', converte to sparse_row.
+│ ├──Models.py: creates an MDP models, needs Graph.py to read external models 
+│ ├──AverageRewardFull.py: algorithms to solve average reward MDPs in Full storage
+│ ├──AverageRewardSparse.py: algorithms to solve average reward MDPs in Sparse storage
+│ │──Plots.py: some util functions to draw 2d (or 3d) heatmaps
+│ └──Launcher.py: The launcher programm
 │ 
 ├─┬─ Results/: heatmap results of different Battery filling scenarios
 │ ├─- Battery_Day_Night_215_r1_1_r3_-5000.pdf
@@ -35,8 +35,9 @@ Tree of the most important files and folder in the project's repository :
 │ ├─- Battery_Day_Night_215_r1_1_r3_-100.pdf
 │ ├─- Battery_Day_Night_215_r1_1_r3_0.pdf
 │ └── ... other experiments
-│ 
-├───.gitignore: To avoid junk files on git repository. 
+│
+├───Screenshots/: contains some screenshots for below explanations
+│
 └───README.md: This file.
 ```
 
@@ -73,75 +74,46 @@ an the span value for different algorithms :
 
 <br>
 <div align="center">
-    <img src="./screenshots/curves_uncomment_in_launcher.png" width="400" height="150"/>
+    <img src="./Screenshots/MDP_Case_6.png" width="800" height="600"/>
 </div>
 <br>
 
 #### Results for this model
 
-There is only one test, but you can generate different types of graphs with different configurations. 
-In particular, you can choose the number of wsm curves displayed, to start at the same point or not, to show all 
-curves with the same scale and the position where the points should be selected.
+The test includes the five algorithms mentioned above. 
+(Comment out any that you are not interested in)
 
 <br>
 <div align="center">
-    <img src="./screenshots/curves_uncomment_in_test_1.png" width="400" height="250"/>
+    <img src="./Screenshots/MDP_Case_6_1.png"" width="300" height="300"/>
+    <img src="./Screenshots/MDP_CAse_6_2.png"" width="350" height="300"/>
 </div>
 <br>
 
 ### B) Test 2 : Analyse of optimale policy for a specific scenario
 
-Allows to show all algorithms already implemented in action.
-To use this test, you need to uncomment the function `si.launch()` in `launcher.py`, after that, you can go to `single.py` 
-to uncomment the actual function to use, moreover you can add or remove
-your own test in this file.
+This allows to display the optimal policy for a specific scenario. It is not necessary to relaunch all five algorithms, using just one is sufficient to generate the optimal policy. RPI + RB is the fastest option
 
 #### Choosing a model, and a specific size 
 
 <br>
 <div align="center">
-    <img src="./screenshots/single_uncomment_in_launcher.png" width="400" height="150"/>
+    <img src="./Screenshots/MDP_case_7.png" width="800" height="400"/>
 </div>
 <br>
 
 #### Results for this model
 
-Once your tests are finished, you can check in `resources/single/<method>/` to see the generated graphs and their data (respectively in pdf and csv files).
-For example, here is the result of the exhaustive search :
+Monitor reward values r1<sup>+</sup>, r2<sup>-</sup>, r3<sup>-</sup> in the MDP_Case = 7 section of `Solve/Launcher.py`. 
+After completing your tests, you can find the generated PDF file in the `Results/` directory. 
+For instance, the results for the scenario in MDP_Case = 7, with current rewards, are stored in `Results/Battery_Day_Night_215_r1_1_r3_-5000.pdf`:
 
 <br>
 <div align="center">
-    <img src="./screenshots/single_exhaustive_results_1.png" width="500" height="125"/>
+    <img src="./Screenshots/MDP_case_7_1.png" width="500" height="350"/>
+    <img src="./Screenshots/MDP_case_7_2.png" width="500" height="350"/>
 </div>
 <br>
-<div align="center">
-    <img src="./screenshots/single_exhaustive_results_2.png" width="500" height="25"/>
-</div>
-<br>
-
-## V - Illustration
-
-In this section all screenshots related to the test are displayed here.
-
-### A) Curves 
-
-<div align="center">
-    <img src="./screenshots/curves_example_1.png" width="300" height="250"/>
-    <img src="./screenshots/curves_example_2.png" width="300" height="250"/>
-    <img src="./screenshots/curves_example_3.png" width="300" height="250"/>
-    <img src="./screenshots/curves_example_4.png" width="300" height="250"/>
-</div>    
-
-### B) Latex (example of a small instance)
-
-<div align="center">
-    <img src="./screenshots/latex_example_1.png" width="600" height="140"/>
-    <img src="./screenshots/latex_example_2.png" width="600" height="70"/>
-    <img src="./screenshots/latex_example_3.png" width="600" height="120"/>
-    <img src="./screenshots/latex_example_4.png" width="600" height="50"/>
-
-</div>
-
 
 
 ##  Contributors & Copyright
