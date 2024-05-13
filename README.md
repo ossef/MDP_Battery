@@ -2,7 +2,7 @@
 
 ## I - Goal
  
-This framework facilitates the resolution of large-scale stochastic decision-making problems, specifically Markov Decision Processes (MDPs) with a particular structure. Typically, the transition graph for each action exhibits this same structure; that is, all cycles within the graph pass through a common state. In our examples, this common state represents an empty container in the Green model or an empty battery in the Battery model. Details about the Green model can be found in [1], though it is discussed solely in the context of Markov chain modeling. However, the details of the Battery model are provided in [2], which indeed addresses an MDP problem for discretized energy packets where we seek finding the optimal policy to sell energy for an off-grid telecom operator.
+This framework facilitates the resolution of large-scale stochastic decision-making problems, specifically Markov Decision Processes (MDPs) with a particular structure. Typically, the transition graph for each action exhibits a particular structure; that is, all cycles within the graph pass through a common state. In our models, this common state represents an empty container in the Green model or an empty battery in the Battery model. Details about the NGreen model can be found in [1], though it is discussed solely in the context of Markov chain modeling. However, details of the Battery model are provided in [2], which specifically addresses an MDP (Markov Decision Process) problem, making it much more suitable for this framework. The Battery MDP model aims to find the optimal policy for selling energy for an off-grid telecom operator. It involves balancing positive rewards from selling battery (hence replacing it with new empty one) energy against negative rewards, as the battery will no longer be available to power its current infrastructure. Additionally, there is a penalty for packet loss, i.e., when energy packets arrive while the current battery is full.
 
 ## II - Project architecture
 
@@ -43,17 +43,19 @@ Tree of the most important files and folder in the project's repository :
 
 ## III - Build and run
 
-Before running code, make sur you have these python dependencies for the "/Solve" directory :
+Before running the code, ensure you have the following Python dependencies installed for the `Solve/` directory :
 
     numpy, scipy, time, matplotlib
 
 Uncomment and run function from Launcher.py : 
 
-    python Launcher.py
+    python3 Launcher.py
 
 ## IV - Usage
 
-Firstly, in the file "/Solve/Models.py", specify the model you want to use by modifying the value of "MDP_Case". MDP_Cases from 0 to 3 are automatically generated in the corresponding "If" structure. In contrast, large-scale models identified by MDP_Case from 4 to 7 have been generated separately using the <a href="https://github.com/ossef/XBorne-2017" target="_blank"> Xborne </a> tool in C language, and are stored in the "/Models" directory. Therefore, if you wish to test a large-scale model from 4 to 7, it is crucial to verify its presence in the directory. Additionally, you can create your own model, add it to "/Models", insert the corresponding "if" condition in "/Solve/Models.py", and update the file "/Solve/Launcher.py".Then, execute "Launcher.py", which will automatically generate the results of the chosen model.
+-Firstly, in the file `/Solve/Models.py`, specify the model you want to use by modifying the value of "MDP_Case". MDP_Cases from 0 to 3 are automatically generated in the corresponding "If" structure. In contrast, large-scale models identified by MDP_Case from 4 to 7 have been generated separately using the <a href="https://github.com/ossef/XBorne-2017" target="_blank"> Xborne </a> tool in C language, and are stored in the `/Models` directory. Therefore, if you wish to test a large-scale model from 4 to 7, it is crucial to verify its presence in the directory. Additionally, you can create your own model, add it to `/Models`, insert the corresponding "if" condition in `/Solve/Models.py`, and update the file `/Solve/Launcher.py`. Then, execute `/Solve/Launcher.py`, which will automatically generate the results of the chosen model.
+
+-Please note that on this GitHub repository, it is not feasible to automatically provide all the models referenced in Models.py. The complete set of analyzed models totals 18 GB. However, a small example is provided for each model. To adjust the model size and test the scalability of the algorithms, simply modify the parameters such as BufferSize, threshold, deadline, and actions in `./scriptMDP`. To alter the structure of the model, manipulation of <a href="https://github.com/ossef/XBorne-2017" target="_blank"> Xborne </a> is required, particularly with `fun.c` file, which encodes the structure of a Markov Chain, including the description of states, various events, transitions, and their probabilities.
 
 In this project, there are two type of tests you can run :
 
@@ -110,8 +112,8 @@ For instance, the results for the scenario in MDP_Case = 7, with current rewards
 
 <br>
 <div align="center">
-    <img src="./Screenshots/MDP_case_7_1.png" width="500" height="350"/>
-    <img src="./Screenshots/MDP_case_7_2.png" width="500" height="350"/>
+    <img src="./Screenshots/MDP_Case_7_1.png" width="500" height="350"/>
+    <img src="./Screenshots/MDP_Case_7_2.png" width="500" height="350"/>
 </div>
 <br>
 
