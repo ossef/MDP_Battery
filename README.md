@@ -121,10 +121,10 @@ For instance, the results for the scenario in MDP_Case = 7, with current rewards
 ##  Contributors & Copyright
 
 - [Youssef AIT EL MAHJOUB](https://github.com/ossef)
-- This code is open source. However, one can cite the original document [2] submitted in WIMOB 2024.
+- This code is open source. However, one can cite the original document [2] submitted to WIMOB 2024.
 
 [1] "Performance and energy efficiency analysis in NGREEN optical network", Youssef AIT EL MAHJOUB, Hind CASTEL-TALEB and Jean-Michel FOURNEAU". In, 14th International Conference on Wireless and Mobile Computing, Networking and Communications, WiMob, 2018.
 
-[2] "Finding the optimal policy to sell energy for an off-grid telecom operator", Youssef AIT EL MAHJOUB and Jean-Michel FOURNEAU". Submitted paper, In, 20th International Conference on Wireless and Mobile Computing, Networking and Communications, WiMob, 2024.
+[2] "Finding the optimal policy to provide energy for an off-grid telecommunication operator", Youssef AIT EL MAHJOUB and Jean-Michel FOURNEAU". Submitted paper, In, 20th International Conference on Wireless and Mobile Computing, Networking and Communications, WiMob, 2024.
 
 
