@@ -1,0 +1,65 @@
+# -----------! pour lancer et obtenir temps d'execution en seconde du script : "time -p ./script" !--------------
+
+#!/bin/bash
+Actions='100'        # Le nombre d'actions i.e. models à génerer 
+
+
+BufferSize='15';  #Capacité de la file, 6
+seuil='12';       #Seuil du conteneur,  3
+deadline='7';    #Deadline de remplissage, 3
+
+#Generation de la chaine de markov
+gcc generMarkov.c -o genMarkov
+
+#Re-ordonner la matrice
+gcc Re-order-Matrice.c -o ReOrder
+
+#Calcul de la distribution stationnaire
+gcc bis-newgthcreux.c -o sparsegthLD
+
+#generation du fichier TGF
+gcc Lam2TGF.c -o lamtgf
+
+# Boucle pour exécuter le script 100 fois
+for ((i=1; i<=$Actions; i++))
+do
+
+    model="Model_a$i";  #Nom du model créé
+
+    if test -e $model.cd
+    then rm $model.cd
+    fi
+
+    if test -e $model.sz
+    then rm $model.sz
+    fi
+
+    if test -e $model.Rii
+    then rm $model.Rii
+    fi
+
+    if test -e $model.pi
+    then rm $model.pi
+    fi
+
+    ./genMarkov -f $model $seuil $deadline $BufferSize
+
+    ./ReOrder $model
+
+    #./lamtgf -f "$model-reordre"
+
+    ./sparsegthLD -f "$model-reordre"
+
+    rm $model.cd
+    rm $model.sz
+    rm $model.Rii
+
+done
+
+#Calcul de la distribution stationnaire
+#gcc gthLD.c -o gthLD 
+#./gthLD -f $model Rii
+
+
+
+

@@ -1,0 +1,68 @@
+# -----------! pour lancer et obtenir temps d'execution en seconde du script : "time -p ./script" !--------------
+
+#!/bin/bash
+Actions='100'        # Le nombre d'actions i.e. models à génerer 
+
+
+BufferSize='10'; #Capacité de la file
+seuil='7';       #Seuil du conteneur
+deadline='7';    #Deadline de remplissage
+
+if test -e $model.cd
+then rm $model.cd
+fi
+
+if test -e $model.sz
+then rm $model.sz
+fi
+
+if test -e $model.Rii
+then rm $model.Rii
+fi
+
+
+if test -e $model.pi
+then rm $model.pi
+fi
+
+
+#Generation de la chaine de markov
+gcc generMarkov.c -o genMarkov
+
+#Calcul de la distribution stationnaire
+gcc bis-newgthcreux.c -o sparsegthLD
+
+# Boucle pour exécuter le script 100 fois
+for ((i=1; i<=$Actions; i++))
+do
+
+    model="Model_a$i";  #Nom du model créé
+
+    if test -e $model.cd
+    then rm $model.cd
+    fi
+
+    if test -e $model.sz
+    then rm $model.sz
+    fi
+
+    if test -e $model.Rii
+    then rm $model.Rii
+    fi
+
+    if test -e $model.pi
+    then rm $model.pi
+    fi
+
+    ./genMarkov -f $model $seuil $deadline $BufferSize
+
+    ./sparsegthLD -f $model
+done
+
+#Calcul de la distribution stationnaire
+#gcc gthLD.c -o gthLD 
+#./gthLD -f $model Rii
+
+
+
+

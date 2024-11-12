@@ -1,0 +1,43 @@
+#!/bin/bash
+
+cities=('Barcelona' 'Unalaska' 'Moscow' 'Paris' 'Rabat')  # Liste des villes
+ncities='5'
+Actions='5'        # Le nombre d'actions i.e. modèles à générer
+
+BufferSize='65';   # Capacité de la file, il peut y avoir normalement jusqu'à 35 paquets
+seuil='25';        # Seuil du conteneur,  3
+
+# Compilation des programmes
+gcc generMarkov.c -o genMarkov
+gcc Re-order-Matrice.c -o ReOrder
+gcc bis-newgthcreux.c -o sparsegthLD
+gcc Lam2TGF.c -o lamtgf
+
+# Boucle pour exécuter le script pour chaque ville et chaque année
+for ((k=1; k<=$ncities; k++)); do
+    for ((mounth=1; mounth<=12; mounth++)); do
+        for ((i=1; i<=$Actions; i++)); do
+
+            # Construction du modèle 
+            model="${cities[k-1]}_M${mounth}_a${i}"  # Exemple: "Fairbank_M1_a1"
+
+            # Suppression des anciens fichiers s'ils existent
+            if test -e "./${cities[k-1]}/$model.cd"; then rm "./${cities[k-1]}/$model.cd"; fi
+            if test -e "./${cities[k-1]}/$model.sz"; then rm "./${cities[k-1]}/$model.sz"; fi
+            if test -e "./${cities[k-1]}/$model.Rii"; then rm "./${cities[k-1]}/$model.Rii"; fi
+            if test -e "./${cities[k-1]}/$model.pi"; then rm "./${cities[k-1]}/$model.pi"; fi
+
+            # Exécution des différentes étapes
+            ./genMarkov -f "$model" $seuil $BufferSize $i "${cities[k-1]}"
+            ./ReOrder "$model" "${cities[k-1]}"
+            ./lamtgf -f "${model}-reordre" "${cities[k-1]}"
+            #./sparsegthLD -f "${model}-reordre" "${cities[k-1]}"
+
+            # Suppression des fichiers générés après traitement
+            rm "./${cities[k-1]}/$model.cd"    # Exemple: rm ./Fairbanks/Fairbanks_a1.cd
+            rm "./${cities[k-1]}/$model.sz"    # Exemple: rm ./Fairbanks/Fairbanks_a1.sz
+            rm "./${cities[k-1]}/$model.Rii"   # Exemple: rm ./Fairbanks/Fairbanks_a1.Rii
+
+            done
+        done
+done
