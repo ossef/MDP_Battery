@@ -407,18 +407,9 @@ elif MDP_Case == 7:
 elif MDP_Case == 8 :
     #Generated with XBorne tool, stored in "./Models/Battery_ComCom2025/" directory
 
-    #            0   1   2 
-    #Buffer    = [30]
-    #sizes     = [373] 
-    #Seuils    = [15]
-    #Deadlines = [18]
-    #Arrivals  = [0,1,3,5] #Batch of arrivals
-    #pArrivals = [0.05, 0.25, 0.4, 0.3]
     pAlpha = 0.01
     pBeta  = 0.99 
     pRelease = [0.1, 0.3, 0.5, 0.7, 0.9] #for each action
-
-    index_model = 0 #choose one of the models !!
 
     A           = 5                          #Number of actions (needs to be as maximum as possible as in directory "model")
 

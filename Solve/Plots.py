@@ -255,9 +255,9 @@ def plot_cities_years_ComCom25(rewards_data, energy_data, loss_data, noService_d
 
     if DATA_TYPE == 2 : 
         markers = ['o', 'x', '+', 's', 'd', '*'] 
-        xlab = "Mounth"
+        xlab = "Month"
         folder1 = "ComCom25/NREL"
-        folder2 = "Cities_Mounths"
+        folder2 = "Cities_Months"
         numbers = [int(m[1:]) for m in numbers]
 
     for i, city in enumerate(cityNames):

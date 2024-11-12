@@ -188,7 +188,7 @@ if(MDP_Case == 8):
         years = [str(year) for year in range(1991, 2010 + 1, 1)]
 
         city, year = "Fairbanks", "2010"
-        #N, n_packets, packet_size, hours_packets, pService, Buffer, Thr, h_deb, Deadline, Ria, P, Ps, states = generate_MDP([], [], r1, r2, r3, r4, 0, city, mounth, DATA_TYPE)
+        #N, n_packets, packet_size, hours_packets, pService, Buffer, Thr, h_deb, Deadline, Ria, P, Ps, states = generate_MDP([], [], r1, r2, r3, r4, 0, city, month, DATA_TYPE)
 
         N, n_packets, packet_size, hours_packets, pService, Buffer, Thr, h_deb, Deadline, Ria, P, Ps, states = generate_MDP([], [], r1, r2, r3, r4, 0, city, year, DATA_TYPE)
         moy, policie = sp.policy_Iteration_Csr_ROB_B(Ps, Ria, max_iter, epsilon, N, A)
@@ -220,10 +220,7 @@ if(MDP_Case == 8):
 
     if DATA_TYPE == 2 :
 
-        '''---------------- Experiment1 : Reward vs Measures --------------- '''
-        r1 = 1          #(1)   Reward for battery release, fixé à 5, ok 
-        r4 = 0          #Penalty loop at (0,0,ON) (not used)
-
+        #---------------- Experiment1 : Reward vs Measures --------------- 
 
         """
         r1 = 1          #(1)   Reward for battery release, fixé à 5, ok 
@@ -231,7 +228,7 @@ if(MDP_Case == 8):
         r2_values = [0,-100]#[0, -1, -10, -100, -300] #[0, -10, -100, -200, -300, -400, -500]         #[0, -1, -10, -100, -300] # Par exemple, les valeurs de r1 à tester
         r3_values = [0, -25]#[0, -1, -10, -20, -30, -50] #[0, -10, -50, -100, -200, -400 ] # Par exemple, les valeurs de r2 à tester
 
-        city, mounth = "Barcelona", "M8"
+        city, month = "Barcelona", "M8"
         data_energy = []
         data_loss = []
         data_noService = []
@@ -241,7 +238,7 @@ if(MDP_Case == 8):
         for r2, r3 in itertools.product(r2_values, r3_values):
             print("\n------------------ Calcul pour r1={}, r2={}, r3={} ------------------".format(r1, r2, r3))
             if read == False:
-                N, n_packets, packet_size, hours_packets, pService, Buffer, Thr, h_deb, Deadline, Ria, P, Ps, states = generate_MDP([], [], r1, r2, r3, r4, 0, city, mounth, DATA_TYPE)
+                N, n_packets, packet_size, hours_packets, pService, Buffer, Thr, h_deb, Deadline, Ria, P, Ps, states = generate_MDP([], [], r1, r2, r3, r4, 0, city, month, DATA_TYPE)
                 read = True
             else :
                 Ria = generate_Reward(N, Thr, Buffer, h_deb, Deadline, packet_size, n_packets, hours_packets, Ps, states, r1, r2, r3, r4)          #Defined rewards
@@ -258,53 +255,54 @@ if(MDP_Case == 8):
             data_loss.append([r2, r3, loss])
             data_noService.append([r2, r3, noService])
             data_moy.append([r2, r3, moy])
-            plot_optimal_policy_2d_ComCom25(states, policie, A, Thr, Buffer, mounth, city, h_deb, Deadline, r1, r2, r3, moy, DATA_TYPE)
+            plot_optimal_policy_2d_ComCom25(states, policie, A, Thr, Buffer, month, city, h_deb, Deadline, r1, r2, r3, moy, DATA_TYPE)
 
 
 
-        plot_optimal_rewards_3d_ComCom25(data_energy, city, r1, mounth, 'Energy vs Rewards,  r1={}'.format(r1), 'Stored energy (Wh)')
-        plot_optimal_rewards_3d_ComCom25(data_noService, city, r1, mounth, 'Delay vs Rewards, r1={}'.format(r1), 'Delay probability')
-        plot_optimal_rewards_3d_ComCom25(data_loss, city, r1, mounth, 'Loss vs Rewards, r1={}'.format(r1), 'Energy loss (Wh)')
-        plot_optimal_rewards_3d_ComCom25(data_moy, city, r1, mounth, 'Combined rewards vs Rewards, r1={}'.format(r1), 'Combined reward')
+        plot_optimal_rewards_3d_ComCom25(data_energy, city, r1, month, 'Energy vs Rewards,  r1={}'.format(r1), 'Stored energy (Wh)')
+        plot_optimal_rewards_3d_ComCom25(data_noService, city, r1, month, 'Delay vs Rewards, r1={}'.format(r1), 'Delay probability')
+        plot_optimal_rewards_3d_ComCom25(data_loss, city, r1, month, 'Loss vs Rewards, r1={}'.format(r1), 'Energy loss (Wh)')
+        plot_optimal_rewards_3d_ComCom25(data_moy, city, r1, month, 'Combined rewards vs Rewards, r1={}'.format(r1), 'Combined reward')
         """
 
 
-        '''---------------- Experiment2 : Optimal Policy for a particular case  ---------------''' 
-
+        #---------------- Experiment2 : Detailed Optimal Policy for a specific case  ---------------
 
         """
-        r2 = -150         #(-1e10) Penalty packets lost, à re-écrire
-        r3 = -300          #(-e4)  Penalty packets delay, à re-écrire
+        r1 = 1          #(1)   Reward for battery release, fixé à 5, ok 
+        r4 = 0          #Penalty loop at (0,0,ON) (not used)
+        r2 = -150         #(-1e10) Penalty packets lost
+        r3 = -300          #(-e4)  Penalty packets delay
 
-        city, mounth = "Barcelona", "M8"
+        city, month = "Barcelona", "M8"
 
-        print("\n --------------------------- {}_{} -----------------------------".format(city,mounth))
-        N, n_packets, packet_size, hours_packets, pService, Buffer, Thr, h_deb, Deadline, Ria, P, Ps, states = generate_MDP([], [], r1, r2, r3, r4, 0, city, mounth, DATA_TYPE)
+        print("\n --------------------------- {}_{} -----------------------------".format(city,month))
+        N, n_packets, packet_size, hours_packets, pService, Buffer, Thr, h_deb, Deadline, Ria, P, Ps, states = generate_MDP([], [], r1, r2, r3, r4, 0, city, month, DATA_TYPE)
         moy, policie = sp.policy_Iteration_Csr_ROB_B(Ps, Ria, max_iter, epsilon, N, A)
         energy, loss, noService = sp.average_Measures(Ps, states, policie, N, packet_size, Buffer, Thr, h_deb, Deadline, pRelease, pService, n_packets, hours_packets)
         #print("energy = {}, loss = {}, noService={}, moy = {}".format(energy, loss, noService, moy))
         moy = energy*r1 + loss*r2 + noService*r3
-        plot_optimal_policy_2d_ComCom25(states, policie, A, Thr, Buffer, mounth, city, h_deb, Deadline, r1, r2, r3, moy, DATA_TYPE)
+        plot_optimal_policy_2d_ComCom25(states, policie, A, Thr, Buffer, month, city, h_deb, Deadline, r1, r2, r3, moy, DATA_TYPE)
         """
 
+        #---------------- Experiment3 : Cities vs Months --------------- 
 
-        '''---------------- Experiment3 : Cities vs Mounths --------------- '''
-
-
+        r1 = 1          #(1)   Reward for battery release, fixé à 5, ok 
+        r4 = 0          #Penalty loop at (0,0,ON) (not used)
         r2 = -100         #(-1e10) Penalty packets lost
         r3 = -200          #(-e4)  Penalty packets delay
 
         cityNames = ["Unalaska", "Moscow", "Paris", "Barcelona", "Rabat" ]
-        mounths   = ["M"+str(mounth) for mounth in range(1, 13, 1)]
+        months   = ["M"+str(month) for month in range(1, 13, 1)]
         rewards_data = {city: [] for city in cityNames}
         energy_data  = {city: [] for city in cityNames}
         loss_data    = {city: [] for city in cityNames}
         noService_data  = {city: [] for city in cityNames}
 
         for city in cityNames: 
-            for  mounth in mounths : 
-                print("\n --------------------------- {}_{} -----------------------------".format(city,mounth))
-                N, n_packets, packet_size, hours_packets, pService, Buffer, Thr, h_deb, Deadline, Ria, P, Ps, states = generate_MDP([], [], r1, r2, r3, r4, 0, city, mounth, DATA_TYPE)
+            for  month in months : 
+                print("\n --------------------------- {}_{} -----------------------------".format(city,month))
+                N, n_packets, packet_size, hours_packets, pService, Buffer, Thr, h_deb, Deadline, Ria, P, Ps, states = generate_MDP([], [], r1, r2, r3, r4, 0, city, month, DATA_TYPE)
                 moy, policie = sp.policy_Iteration_Csr_ROB_B(Ps, Ria, max_iter, epsilon, N, A)
                 energy, loss, noService = sp.average_Measures(Ps, states, policie, N, packet_size, Buffer, Thr, h_deb, Deadline, pRelease, pService, n_packets, hours_packets)
                 moy = energy*r1 + loss*r2 + noService*r3
@@ -312,6 +310,6 @@ if(MDP_Case == 8):
                 energy_data[city].append(energy)
                 loss_data[city].append(loss)
                 noService_data[city].append(noService)
-                #plot_optimal_policy_2d(states, policie, A, Thr, Buffer, mounth, city, h_deb, Deadline, r1, r2, r3, moy, DATA_TYPE)
+                #plot_optimal_policy_2d(states, policie, A, Thr, Buffer, month, city, h_deb, Deadline, r1, r2, r3, moy, DATA_TYPE)
 
-        plot_cities_years_ComCom25(rewards_data, energy_data, loss_data, noService_data, cityNames, mounths, r1, r2, r3, Thr, Buffer, DATA_TYPE)
+        plot_cities_years_ComCom25(rewards_data, energy_data, loss_data, noService_data, cityNames, months, r1, r2, r3, Thr, Buffer, DATA_TYPE)
