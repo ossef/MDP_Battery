@@ -138,7 +138,7 @@ Experiment3 : Cities vs Months — Compares different locations and months of th
 In next, we test Experiment3
 <br>
 <div align="center">
-    <img src="./Screenshots/MDP_case_8.png" width="800" height="400"/>
+    <img src="./Screenshots/MDP_Case_8.png" width="800" height="400"/>
 </div>
 <br>
 
@@ -150,10 +150,10 @@ For instance, the results with current rewards r1<sup>+</sup>=1, r2<sup>-</sup>=
 
 <br>
 <div align="center">
-    <img src="./Screenshots/MDP_Case_8_1.png" width="500" height="350"/>
-    <img src="./Screenshots/MDP_Case_8_2.png" width="500" height="350"/>
-    <img src="./Screenshots/MDP_Case_8_3.png" width="500" height="350"/>
-    <img src="./Screenshots/MDP_Case_8_4.png" width="500" height="350"/>
+    <img src="./Screenshots/MDP_Case_8_1.jpg" width="500" height="350"/>
+    <img src="./Screenshots/MDP_Case_8_2.jpg" width="500" height="350"/>
+    <img src="./Screenshots/MDP_Case_8_3.jpg" width="500" height="350"/>
+    <img src="./Screenshots/MDP_Case_8_4.jpg" width="500" height="350"/>
 </div>
 <br>
 
