@@ -161,6 +161,7 @@ For instance, the results with current rewards r1<sup>+</sup>=1, r2<sup>-</sup>=
 ##  Contributors & Copyright
 
 - [Youssef AIT EL MAHJOUB](https://github.com/ossef)
+- Jean-Michel Fourneau
 - This code is open source. The original documents [1, 2, 3].
 
 [1] "Performance and energy efficiency analysis in NGREEN optical network", Youssef AIT EL MAHJOUB, Hind CASTEL-TALEB and Jean-Michel FOURNEAU". In, 14th International Conference on Wireless and Mobile Computing, Networking and Communications, WiMob, 2018.
