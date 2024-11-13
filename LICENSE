@@ -1,0 +1,29 @@
+MIT License
+
+Copyright (c) 2024 Ait-El-Mahjoub
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to one of the following conditions:
+
+1. The above copyright notice and this permission notice shall be included in all
+   copies or substantial portions of the Software.
+
+2. Any public use, distribution, or publication of the Software, modified or 
+   unmodified, must include a citation of the original project or associated 
+   scientific article: [1], [2] or [3].
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+[1] "Performance and energy efficiency analysis in NGREEN optical network", Youssef AIT EL MAHJOUB, Hind CASTEL-TALEB and Jean-Michel FOURNEAU". In, 14th International Conference on Wireless and Mobile Computing, Networking and Communications, WiMob, 2018.
+[2] "Finding the optimal policy to provide energy for an off-grid telecommunication operator", Youssef AIT EL MAHJOUB and Jean-Michel FOURNEAU". In, 20th International Conference on Wireless and Mobile Computing, Networking and Communications, WiMob, 2024.
+[3] "A slot-based energy storage decision-making approach for optimal Off-Grid telecommunication operator", Youssef AIT EL MAHJOUB and Jean-Michel FOURNEAU". Pre-print submitted to Computer Communication Journal 2025, A special issue of WiMob2024.
