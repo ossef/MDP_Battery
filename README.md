@@ -158,7 +158,7 @@ For instance, the results with current rewards r1<sup>+</sup>=1, r2<sup>-</sup>=
 <br>
 
 
-##  Contributors & Copyright
+##  Contributors
 
 - [Youssef AIT EL MAHJOUB](https://github.com/ossef)
 - Jean-Michel Fourneau
