@@ -168,6 +168,6 @@ For instance, the results with current rewards r1<sup>+</sup>=1, r2<sup>-</sup>=
 
 [2] "Finding the optimal policy to provide energy for an off-grid telecommunication operator", Youssef AIT EL MAHJOUB and Jean-Michel FOURNEAU". In, 20th International Conference on Wireless and Mobile Computing, Networking and Communications, WiMob, 2024.
 
-[3] "A slot-based energy storage decision-making approach for optimal Off-Grid telecommunication operator", Youssef AIT EL MAHJOUB and Jean-Michel FOURNEAU". Pre-print submitted to Computer Communication Journal 2025, A special issue of WiMob2024. 
+[3] "A slot-based energy storage decision-making approach for optimal Off-Grid telecommunication operator", Youssef AIT EL MAHJOUB and Jean-Michel FOURNEAU". Pre-print submitted to Computer Communications Journal 2025, A special issue of WiMob2024. 
 
 
