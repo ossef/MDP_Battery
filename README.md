@@ -162,12 +162,13 @@ For instance, the results with current rewards r1<sup>+</sup>=1, r2<sup>-</sup>=
 
 - [Youssef AIT EL MAHJOUB](https://github.com/ossef)
 - Jean-Michel Fourneau
-- The original documents [1, 2], a longer version in preparation in [3].
+
+Related documents :  [1, 2], a longer Accepted journal version in [3].
 
 [1] "Performance and energy efficiency analysis in NGREEN optical network", Youssef AIT EL MAHJOUB, Hind CASTEL-TALEB and Jean-Michel FOURNEAU". In, 14th International Conference on Wireless and Mobile Computing, Networking and Communications, WiMob, 2018.
 
 [2] "Finding the optimal policy to provide energy for an off-grid telecommunication operator", Youssef AIT EL MAHJOUB and Jean-Michel FOURNEAU". In, 20th International Conference on Wireless and Mobile Computing, Networking and Communications, WiMob, 2024.
 
-[3] "A slot-based energy storage decision-making approach for optimal Off-Grid telecommunication operator", Youssef AIT EL MAHJOUB and Jean-Michel FOURNEAU". Pre-print submitted to Computer Communications Journal 2025, A special issue of WiMob2024. 
+[3] "A Slot-Based Energy Storage Decision-Making approach for Optimal Off-Grid Telecommunication operator", Youssef AIT EL MAHJOUB and Jean-Michel FOURNEAU. Elsevier, Computer Communications Journal, 2025. 
 
 
