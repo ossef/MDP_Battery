@@ -169,6 +169,6 @@ Related documents :  [1, 2], a longer Accepted journal version in [3].
 
 [2] "Finding the optimal policy to provide energy for an off-grid telecommunication operator", Youssef AIT EL MAHJOUB and Jean-Michel FOURNEAU". In, 20th International Conference on Wireless and Mobile Computing, Networking and Communications, WiMob, 2024.
 
-[3] "A Slot-Based Energy Storage Decision-Making approach for Optimal Off-Grid Telecommunication operator", Youssef AIT EL MAHJOUB and Jean-Michel FOURNEAU. Elsevier, Computer Communications Journal, 2025. 
+[3] "A Slot-Based Energy Storage Decision-Making approach for Optimal Off-Grid Telecommunication operator", Youssef AIT EL MAHJOUB and Jean-Michel FOURNEAU. Elsevier Computer Communications Journal, 2025. 
 
 
